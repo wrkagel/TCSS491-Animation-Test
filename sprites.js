@@ -25,26 +25,64 @@ class egg1 {
 	}
 
 	update() {
-		if (this.game.left) {
-			this.x -= 5;
-			this.left = true;
+		if (this.left) {
+			this.flip = false;
+			if (this.down) {
+				this.direction = 1
+			} else if (this.up) {
+				this.direction = 3
+			} else {
+				this.direction = 2
+			}
+		} else if (this.right) {
+			this.flip = true;
+			if (this.down) {
+				this.direction = 1
+			} else if (this.up) {
+				this.direction = 3
+			} else {
+				this.direction = 2
+			}
+		} else if (this.down) {
+			this.direction = 0
+		} else if (this.up) {
+			this.direction = 4;
 		}
-		if (this.game.right) {
-			this.x += 5;
-			this.right = true;
-		}
-		if (this.game.up) {
-			this.y -= 5;
-			this.up = true;
-		}
-		if (this.game.down) {
-			this.y += 5;
-			this.down = true;
+		switch (this.direction) {
+			case 0:
+				this.y += 5;
+				break;
+			case 1:
+				if (flip) {
+					this.x += 3;
+				} else {
+					this.x -= 3;
+				}
+				this.y += 3;
+				break;
+			case 2:
+				if (flip) {
+					this.x += 5;
+				} else {
+					this.x -= 5;
+				}
+				break;
+			case 3:
+				if (flip) {
+					this.x += 3;
+				} else {
+					this.x -= 3;
+				}
+				this.y -= 3;
+				break;
+			case 4:
+				this.y -= 5;
+				break;
 		}
 	};
 
 	draw(ctx) {
-		this.animations[4].drawFrame(this.game.clockTick, this.game.ctx, this.x, this.y, 3);
+		this.animations[this.direction].drawFrame(this.game.clockTick, this.game.ctx, this.x, this.y, 3);
 	}
 
 };
