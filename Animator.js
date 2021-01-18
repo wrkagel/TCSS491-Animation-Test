@@ -22,6 +22,11 @@ class Animator {
         let frame = this.currentFrame();
         if (this.reverse) frame = this.frameCount - frame - 1;
 
+        if (this.flip) {
+            ctx.save();
+            ctx.scale(-1, 1);
+            x = 0 - x - params.WIDTH * scale;
+        }
 
         ctx.drawImage(this.spritesheet,
             this.xStart + frame * (this.width + this.framePadding), this.yStart, //source from sheet
@@ -29,6 +34,10 @@ class Animator {
             x, y,
             this.width * scale,
             this.height * scale);
+
+        if (this.flip) {
+            ctx.restore();
+        }
 
 /*        if (PARAMS.DEBUG) {
             ctx.strokeStyle = 'Green';
