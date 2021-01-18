@@ -1,7 +1,7 @@
 var ASSET_MANAGER = new AssetManager();
 var gameEngine = new GameEngine();
 
-ASSET_MANAGER.queueDownload("./Charrepo1.png");
+ASSET_MANAGER.queueDownload("./Sprites/FFVIIISprites.png");
 
 ASSET_MANAGER.downloadAll(function () {
 

@@ -1,10 +1,11 @@
 // JavaScript source code
-class charrepo {
+class squall {
 	constructor(game, x, y) {
 		Object.assign(this, { game, x, y });
-		this.game.charrepo = this;
+		this.game.squall = this;
 
-		this.sprite = ASSET_MANAGER.getAsset("./Charrepo1.png");
+		this.spritesheet = ASSET_MANAGER.getAsset("./Sprites/FFVIIISprites.png");
+
 	};
 
 	update() {

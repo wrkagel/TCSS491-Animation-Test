@@ -4,6 +4,6 @@ class SceneManager {
         this.game = game;
         this.game.camera = this;
         this.x = 0;
-        game.addEntity(new charrepo(game, 100, 100));
+        game.addEntity(new squall(game, 100, 100));
     };
 }
